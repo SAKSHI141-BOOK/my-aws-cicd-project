@@ -1,18 +1,12 @@
-const http = require("http");
+const express = require('express');
+const app = express();
 
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {
-        "Content-Type": "text/html"
-    });
-
-    res.end(`
-        <h1>Hii from Node.js team by sakshi!!!!</h1>
-        <p>Application deployed using GitHub Actions → AWS EC2</p>
-    `);
+app.get('/', (req, res) => {
+  res.send('<h1>Hello World! AWS EC2 CICD Done!</h1>');
 });
 
-server.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
